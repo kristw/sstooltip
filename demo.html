@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link rel="stylesheet" href="sstooltip.css">
+		<style type="text/css">
+			body{
+			  font-family: Helvetica, Arial, sans-serif;
+			}
+			a {
+			  color: #0088cc;
+			  text-decoration: none;
+			}
+			a:hover {
+			  color: #005580;
+			  text-decoration: underline;
+			}
+
+			.link3Tip{
+				color: #ff6600;
+				font-size: 14px;
+			}
+		</style>
+
+		<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="sstooltip.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			myTip = new sstooltip("myTip");
+
+			// manual binding
+			$link1 = $("#link1");
+			$link1.on("mouseover", function(event){
+				myTip.show("This is tooltip!", event);
+			});
+			$link1.on("mousemove", function(event){
+				myTip.updatePosition(event);
+			});
+			$link1.on("mouseout", function(){
+				myTip.hide();
+			});
+
+			// automatic binding
+			myTip.bind("#link2", "Create tooltip in a few lines.");
+
+			// automatic binding with html content
+			myTip.bind("#link3", '<div class="link3Tip">Hello <b>Hello</b> Hello</div>This is HTML content.');
+		});
+		</script>
+	</head>
+
+	<body>
+		<div align="center">
+			<h3><a href="#" id="link1">link1</a></h3>
+			<h3><a href="#" id="link2">link2</a></h3>
+			<h3><a href="#" id="link3">link3</a></h3>
+		</div>
+	</body>
+</html>

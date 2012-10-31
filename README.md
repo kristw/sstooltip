@@ -3,6 +3,6 @@ sstooltip
 
 simple &amp; stupid tooltip in Javascript
 
-require jQuery. 
+Require jQuery. 
 
 See demo.html for example.

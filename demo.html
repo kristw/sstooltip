@@ -45,6 +45,13 @@
 
 			// automatic binding with html content
 			myTip.bind("#link3", '<div class="link3Tip">Hello <b>Hello</b> Hello</div>This is HTML content.');
+
+			// content as function
+			function contentFunc(){
+				return "tooltip for "+$(this).attr('id');
+			}
+			myTip.bind("#link4", contentFunc);
+			myTip.bind("#link5", contentFunc);
 		});
 		</script>
 	</head>
@@ -54,6 +61,8 @@
 			<h3><a href="#" id="link1">link1</a></h3>
 			<h3><a href="#" id="link2">link2</a></h3>
 			<h3><a href="#" id="link3">link3</a></h3>
+			<h3><a href="#" id="link4">link4</a></h3>
+			<h3><a href="#" id="link5">link5</a></h3>
 		</div>
 	</body>
 </html>

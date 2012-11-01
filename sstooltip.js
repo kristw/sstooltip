@@ -44,7 +44,12 @@ var sstooltip = function(tooltipId, width){
 	function bind(selector, content){
 		var $target = $(selector);
 		$target.on("mouseover", function(event){
-			show(content, event);
+			if($.isFunction(content)){
+				show(content.call($(this)), event);
+			}
+			else{
+				show(content, event);
+			}
 		});
 		$target.on("mousemove", function(event){
 			updatePosition(event);

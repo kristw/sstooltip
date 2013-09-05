@@ -30,11 +30,11 @@
     yOffset: 10
   };
 
-  var sstooltip = function(_tooltip_id, _options){
+  var sstooltip = function(_dom, _options){
     //---------------------------------------------------
     // Init
     //---------------------------------------------------
-    var $tooltip = $("#"+_tooltip_id).addClass("sstooltip");
+    var $tooltip = $(_dom).addClass("sstooltip");
 
     var options = $.extend({},DEFAULT_OPTIONS);
     if(_options){

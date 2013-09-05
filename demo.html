@@ -37,7 +37,9 @@
 		<script type="text/javascript" src="sstooltip.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function(){
-			myTip = new sstooltip("myTip");
+			myTip = new sstooltip("myTip", {
+				yOffset: 15
+			});
 
 			// manual binding
 			$link1 = $("#link1");

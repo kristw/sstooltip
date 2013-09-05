@@ -104,7 +104,8 @@
       show: show,
       hide: hide,
       updatePosition: updatePosition,
-      bind: bind
+      bind: bind,
+      version: "2.0"
     };
   };
 

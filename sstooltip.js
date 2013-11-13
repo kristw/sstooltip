@@ -51,7 +51,9 @@
     // Functions
     //---------------------------------------------------
     function show(content, event){
-      $tooltip.html(content);
+      if(content){
+        $tooltip.html(content);
+      }
       $tooltip.show();
 
       updatePosition(event);

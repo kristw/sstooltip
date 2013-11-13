@@ -1,0 +1,22 @@
+{
+  "name": "sstooltip",
+  "main": "sstooltip.min.js",
+  "version": "1.1",
+  "homepage": "https://github.com/kristw/sstooltip",
+  "authors": [
+    "Krist Wongsuphasawat <krist.wongz@gmail.com>"
+  ],
+  "description": "simple and stupid tooltip",
+  "keywords": [
+    "sstooltip",
+    "tooltip"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

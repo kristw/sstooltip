@@ -1,8 +1,14 @@
 sstooltip
 =========
 
-simple &amp; stupid tooltip in Javascript
+This is simple &amp; stupid tooltip javascript library.
 
-Require jQuery. 
+Only requires jQuery. See demo.html for example usage.
 
-See demo.html for example.
+---
+
+Install via bower
+
+```
+bower install sstooltip
+```

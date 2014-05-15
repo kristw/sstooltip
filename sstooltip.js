@@ -16,13 +16,13 @@
 // the top function.
 
 (function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery'], factory);
-    } else {
-        // Browser globals
-        root.sstooltip = factory($);
-    }
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else {
+    // Browser globals
+    root.sstooltip = factory($);
+  }
 }(this, function ($) {
 
   var DEFAULT_OPTIONS = {
@@ -35,11 +35,10 @@
     // Init
     //---------------------------------------------------
     var $tooltip = $(_dom).addClass("sstooltip");
+    var $parent  = $tooltip.parent();
+    var $window  = $(window);
 
-    var options = $.extend({},DEFAULT_OPTIONS);
-    if(_options){
-      options = $.extend(options, _options);
-    }
+    var options = $.extend({}, DEFAULT_OPTIONS, _options);
 
     if(options.width){
       $tooltip.css("width", width);
@@ -54,34 +53,49 @@
       if(content){
         $tooltip.html(content);
       }
-      $tooltip.show();
-
+      _dom.style.display = 'block';
       updatePosition(event);
     }
 
     function hide(){
-      $tooltip.hide();
+      _dom.style.display = 'none';
     }
 
     function updatePosition(event){
+      // Offset from mouse position
       var xOffset = options.xOffset;
       var yOffset = options.yOffset;
 
+      // Tooltip dimension
       var ttw = $tooltip.width();
       var tth = $tooltip.height();
-      var wscrY = $(window).scrollTop();
-      var wscrX = $(window).scrollLeft();
+
+      // Scroll position
+      var wscrY = $window.scrollTop();
+      var wscrX = $window.scrollLeft();
+
+      // Mouse position
       var curX = (document.all) ? event.clientX + wscrX : event.pageX;
       var curY = (document.all) ? event.clientY + wscrY : event.pageY;
-      var ttleft = ((curX - wscrX + xOffset*2 + ttw) > $(window).width()) ? curX - ttw - xOffset*2 : curX + xOffset;
+
+      // Calculate position
+      var ttleft = ((curX - wscrX + xOffset*2 + ttw) > $window.width()) ? curX - ttw - xOffset*2 : curX + xOffset;
       if (ttleft < wscrX + xOffset){
         ttleft = wscrX + xOffset;
       }
-      var tttop = ((curY - wscrY + yOffset*2 + tth) > $(window).height()) ? curY - tth - yOffset*2 : curY + yOffset;
+      var tttop = ((curY - wscrY + yOffset*2 + tth) > $window.height()) ? curY - tth - yOffset*2 : curY + yOffset;
       if (tttop < wscrY + yOffset){
         tttop = curY + yOffset;
       }
-      $tooltip.css('top', tttop + 'px').css('left', ttleft + 'px');
+
+      // Adjust to offset container position
+      var parentOffset = $parent.offset();
+      tttop  -= Math.round(parentOffset.top);
+      ttleft -= Math.round(parentOffset.left);
+
+      // Set tooltip final position
+      _dom.style.top  = tttop  + 'px';
+      _dom.style.left = ttleft + 'px';
     }
 
     function bind(selector, content){
@@ -94,12 +108,8 @@
           show(content, event);
         }
       });
-      $target.on("mousemove", function(event){
-        updatePosition(event);
-      });
-      $target.on("mouseout", function(){
-        hide();
-      });
+      $target.on("mousemove", updatePosition);
+      $target.on("mouseout",  hide);
     }
 
     return {
@@ -107,7 +117,7 @@
       hide: hide,
       updatePosition: updatePosition,
       bind: bind,
-      version: "2.0"
+      version: "2.1.0"
     };
   };
 

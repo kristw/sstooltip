@@ -1,19 +1,5 @@
-// Uses AMD or browser globals to create a module.
-
-// If you want something that will also work in Node, see returnExports.js
-// If you want to support other stricter CommonJS environments,
-// or if you need to create a circular dependency, see commonJsStrict.js
-
-// Defines a module "amdWeb" that depends another module called "b".
-// Note that the name of the module is implied by the file name. It is best
-// if the file name and the exported global have matching names.
-
-// If the 'b' module also uses this type of boilerplate, then
-// in the browser, it will create a global .b that is used below.
-
-// If you do not want to support the browser global path, then you
-// can remove the `root` use and the passing `this` as the first arg to
-// the top function.
+// Define module using Universal Module Definition pattern
+// https://github.com/umdjs/umd/blob/master/amdWeb.js
 
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
@@ -24,6 +10,8 @@
     root.sstooltip = factory($);
   }
 }(this, function ($) {
+
+  var VERSION = '3.1.0';
 
   var DEFAULT_OPTIONS = {
     xOffset: 20,
@@ -53,11 +41,19 @@
     // Functions
     //---------------------------------------------------
     function show(content, event){
-      if(content){
-        $tooltip.html(content);
+      switch(arguments.length){
+        case 1:
+          dom.style.display = 'block';
+          updatePosition(arguments[0]);
+          break;
+        case 2:
+          if(content){
+            $tooltip.html(content);
+          }
+          dom.style.display = 'block';
+          updatePosition(event);
+          break;
       }
-      dom.style.display = 'block';
-      updatePosition(event);
     }
 
     function hide(){
@@ -118,15 +114,11 @@
     return {
       show: show,
       hide: hide,
-      updatePosition: updatePosition,
-      bind: bind,
-      version: "3.0.0"
+      bind: bind
     };
   };
 
-  // Just return a value to define the module export.
-  // This example returns an object, but the module
-  // can return a function as the exported value.
+  sstooltip.version = VERSION;
   return sstooltip;
 }));
 

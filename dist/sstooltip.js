@@ -27,18 +27,21 @@
 
   var DEFAULT_OPTIONS = {
     xOffset: 20,
-    yOffset: 10
+    yOffset: 10,
+    compensatedXOffset: 6, // when the tooltip is on the left
+    compensatedYOffset: 0  // when the tooltip is on the top
   };
 
-  var sstooltip = function(_dom, _options){
+  var sstooltip = function(node, customOptions){
     //---------------------------------------------------
     // Init
     //---------------------------------------------------
-    var $tooltip = $(_dom).addClass("sstooltip");
+    var dom = $(node)[0];
+    var $tooltip = $(node).addClass("sstooltip");
     var $parent  = $tooltip.parent();
     var $window  = $(window);
 
-    var options = $.extend({}, DEFAULT_OPTIONS, _options);
+    var options = $.extend({}, DEFAULT_OPTIONS, customOptions);
 
     if(options.width){
       $tooltip.css("width", width);
@@ -53,12 +56,12 @@
       if(content){
         $tooltip.html(content);
       }
-      _dom.style.display = 'block';
+      dom.style.display = 'block';
       updatePosition(event);
     }
 
     function hide(){
-      _dom.style.display = 'none';
+      dom.style.display = 'none';
     }
 
     function updatePosition(event){
@@ -79,11 +82,11 @@
       var curY = (document.all) ? event.clientY + wscrY : event.pageY;
 
       // Calculate position
-      var ttleft = ((curX - wscrX + xOffset*2 + ttw) > $window.width()) ? curX - ttw - xOffset*2 : curX + xOffset;
+      var ttleft = ((curX - wscrX + xOffset*2 + ttw) > $window.width()) ? curX - ttw - xOffset*2 + options.compensatedXOffset : curX + xOffset;
       if (ttleft < wscrX + xOffset){
         ttleft = wscrX + xOffset;
       }
-      var tttop = ((curY - wscrY + yOffset*2 + tth) > $window.height()) ? curY - tth - yOffset*2 : curY + yOffset;
+      var tttop = ((curY - wscrY + yOffset*2 + tth) > $window.height()) ? curY - tth - yOffset*2 + options.compensatedYOffset : curY + yOffset;
       if (tttop < wscrY + yOffset){
         tttop = curY + yOffset;
       }
@@ -94,8 +97,8 @@
       ttleft -= Math.round(parentOffset.left);
 
       // Set tooltip final position
-      _dom.style.top  = tttop  + 'px';
-      _dom.style.left = ttleft + 'px';
+      dom.style.top  = tttop  + 'px';
+      dom.style.left = ttleft + 'px';
     }
 
     function bind(selector, content){

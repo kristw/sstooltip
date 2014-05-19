@@ -1,15 +1,16 @@
 {
   "name": "sstooltip",
   "main": "sstooltip.min.js",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "homepage": "https://github.com/kristw/sstooltip",
   "authors": [
     "Krist Wongsuphasawat <krist.wongz@gmail.com>"
   ],
-  "description": "simple and stupid tooltip",
+  "description": "simple and stupid tooltip + angular support",
   "keywords": [
     "sstooltip",
-    "tooltip"
+    "tooltip",
+    "sstooltip-angular"
   ],
   "license": "Apache 2",
   "ignore": [
@@ -18,9 +19,13 @@
     "bower_components",
     "test",
     "tests",
-    "build.sh"
+    "build.sh",
+    "config.rb",
+    "src",
+    "example"
   ],
   "dependencies": {
-    "jquery": ">=1.8.2"
+    "jquery": ">=1.8.2",
+    "angular": ">=1.2.16"
   }
 }

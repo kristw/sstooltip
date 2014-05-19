@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<link rel="stylesheet" href="../dist/sstooltip.css">
+		<style type="text/css">
+			body{
+			  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			}
+			a {
+			  color: #0088cc;
+			  text-decoration: none;
+			}
+			a:hover {
+			  color: #005580;
+			  text-decoration: underline;
+			}
+
+			.link3Tip{
+				color: #ff6600;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body ng-app="app">
+		<div ng-controller="mainCtrl">
+			<div align="center">
+				<h3><a href="#" id="link0">link0</a></h3>
+				<h3><a href="#" id="link1">link1</a></h3>
+				<h3><a href="#" id="link2">link2</a></h3>
+				<h3><a href="#" id="link3">link3</a></h3>
+				<h3><a href="#" id="link4">link4</a></h3>
+			</div>
+
+			<!-- 1) declare tooltips -->
+			<div ss-tooltip tooltip-key="tip0" tooltip-text="'tooltip#0 Static text'"></div>
+			<div ss-tooltip tooltip-key="tip1" tooltip-src="'partials/tooltip1.html'"></div>
+			<div ss-tooltip tooltip-key="tip2" tooltip-src="'partials/tooltip2.html'"></div>
+			<div ss-tooltip tooltip-key="tip3" tooltip-text="variableText"></div>
+		</div>
+
+		<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="../src/sstooltip.js"></script>
+		<script type="text/javascript" src="../src/angular-sstooltip.js"></script>
+
+		<script type="text/javascript">
+			var app = angular.module('app', ['sstooltip']);
+
+			app.controller('mainCtrl', ['$scope', 'ssTooltipManager', function($scope, ssTooltipManager){
+
+				setInterval(function(){
+					$scope.variableText = 'Random number: ' + Math.round(Math.random()*100);
+				}, 600);
+
+				// 2) create managers
+				var tip0 = new ssTooltipManager($scope, 'tip0');
+				var tip1 = new ssTooltipManager($scope, 'tip1');
+				var tip2 = new ssTooltipManager($scope, 'tip2');
+				var tip3 = new ssTooltipManager($scope, 'tip3');
+
+				// 3) use the manager to trigger tooltip
+
+				// 3.1 traditional way
+				$('#link0')
+					.on('mouseover', tip0.show)
+					.on('mousemove', tip0.move)
+					.on('mouseout',  tip0.hide);
+
+				// 3.2 use built-in manager's function
+				tip1.triggerOnDomEvents(
+					document.querySelector('#link1'), // accept dom
+					'mouseover', 'mousemove', 'mouseout'
+				);
+
+				// 3.3 pass custom data
+				tip2.triggerOnDomEvents(
+					$('#link2'), // also accept jquery selection
+					'mouseover', 'mousemove', 'mouseout',
+					{dummy: 'data'}
+				);
+
+				// 3.4 listen to scope events
+
+				// assuming that this is a directive that emits some events.
+				// the data from these events must have two fields (mouseEvent and data)
+				$('#link3')
+					.on('mouseover', function(event){
+						$scope.$emit('requestTooltip:show', {mouseEvent: event, data: 'testData'});
+					})
+					.on('mousemove', function(event){
+						$scope.$emit('requestTooltip:move', {mouseEvent: event, data: 'testData'});
+					})
+					.on('mouseout', function(event){
+						$scope.$emit('requestTooltip:hide', {mouseEvent: event, data: 'testData'});
+					});
+
+				// our tooltip can catch them!
+				tip3.triggerOnScopeEvents(
+					'requestTooltip:show', 'requestTooltip:move', 'requestTooltip:hide'
+				);
+
+			}]);
+
+		</script>
+
+	</body>
+</html>

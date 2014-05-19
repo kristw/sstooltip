@@ -1,4 +1,12 @@
 # npm install -g uglify-js
 # npm install -g uglifycss
-uglifyjs sstooltip.js -c -v --stats -o sstooltip.min.js
-uglifycss sstooltip.css > sstooltip.min.css
+
+# js
+uglifyjs  src/sstooltip.js -c -v --stats -o dist/sstooltip.min.js
+uglifyjs  src/angular-sstooltip.js -c -v --stats -o dist/angular-sstooltip.min.js
+cp src/sstooltip.js dist/sstooltip.js
+cp src/angular-sstooltip.js dist/angular-sstooltip.js
+
+# css
+compass compile
+uglifycss dist/sstooltip.css > dist/sstooltip.min.css

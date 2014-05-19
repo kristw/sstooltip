@@ -1,0 +1,13 @@
+/* line 1, ../src/sstooltip.scss */
+.sstooltip {
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  left: 100px;
+  border-radius: 5px;
+  background: #222222;
+  opacity: .9;
+  color: #eeeeee;
+  padding: 10px;
+  font-size: 12px;
+}

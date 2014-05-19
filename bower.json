@@ -1,7 +1,7 @@
 {
   "name": "sstooltip",
   "main": "sstooltip.min.js",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "homepage": "https://github.com/kristw/sstooltip",
   "authors": [
     "Krist Wongsuphasawat <krist.wongz@gmail.com>"

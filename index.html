@@ -3,17 +3,24 @@
 <html>
   <head>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/dist/sstooltip.css">
+    <link rel="stylesheet" href="dist/sstooltip.css">
   </head>
 
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
           <h1>sstooltip</h1>
           <p class="">
             This is a simple &amp; stupid tooltip, a.k.a. <i>sstooltip</i>, javascript library, written by <a id="twitter-link" href="https://twitter.com/kristw">@kristw</a>.
           </p>
+        </div>
+        <div class="col-md-4">
+          <br>
+          <div class="pull-right">
+            <a href="https://github.com/kristw/sstooltip" class="btn btn-large btn-primary">back to github</a>
+          </div>
+
         </div>
       </div>
       <div class="row">
@@ -91,8 +98,8 @@
       <div id="my-tip" style="display:none"></div>
     </div>
 
-    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/src/sstooltip.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="src/sstooltip.js"></script>
     <script>
       $(document).ready(function(){
         var myTip = new sstooltip('#my-tip');

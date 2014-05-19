@@ -25,7 +25,7 @@ function ($, angular, sstooltip) {
 
   var module = angular.module('sstooltip', []);
 
-  module.directive('ssTooltip', [function (){
+  module.directive('sstooltip', [function (){
     return {
       restrict: 'AE',
       replace: true,
@@ -38,8 +38,13 @@ function ($, angular, sstooltip) {
       link: function(scope, element, attrs) {
 
         /* jshint ignore:start */
-        var tip = new sstooltip(element[0].querySelector('.sstooltip'));
+        var tooltipElement = element[0].querySelector('.sstooltip');
+        var tip = new sstooltip(tooltipElement);
         /* jshint ignore:end */
+
+        if(attrs.tooltipTheme){
+          $(tooltipElement).addClass('sstooltip-'+attrs.tooltipTheme);
+        }
 
         scope.$on('sstooltip:show', function(event, tooltipKey, data){
           if(tooltipKey==scope.tooltipKey){
@@ -82,7 +87,7 @@ function ($, angular, sstooltip) {
     }
   }
 
-  module.factory('ssTooltipManager', [function(){
+  module.factory('sstooltipManager', [function(){
     return function($scope, tooltipKey){
 
       function triggerOnScopeEvents(triggerShowEvent, triggerMoveEvent, triggerHideEvent, dataFn, mouseEventFn){
@@ -158,76 +163,6 @@ function ($, angular, sstooltip) {
       };
     };
   }]);
-
-  // module.factory('ssTooltipService', [function (){
-  //   function triggerOnScopeEvents($scope, tooltipKey, triggerShowEvent, triggerMoveEvent, triggerHideEvent){
-  //     // register events that trigger tooltip to show
-  //     if(triggerShowEvent){
-  //       $scope.$on(triggerShowEvent, function(event, data){
-  //         show($scope, tooltipKey, data);
-  //       });
-  //     }
-  //     // register events that trigger tooltip to move
-  //     if(triggerMoveEvent){
-  //       $scope.$on(triggerMoveEvent, function(event, data){
-  //         move($scope, tooltipKey, data);
-  //       });
-  //     }
-  //     // register events that trigger tooltip to hide
-  //     if(triggerHideEvent){
-  //       $scope.$on(triggerHideEvent, function(){
-  //         hide($scope, tooltipKey);
-  //       });
-  //     }
-  //   }
-
-  //   function triggerOnDomEvents($scope, dom, tooltipKey, triggerShowEvent, triggerMoveEvent, triggerHideEvent, dataFn){
-  //     // register events that trigger tooltip to show
-  //     if(triggerShowEvent){
-  //       $(dom).on(triggerShowEvent, function(event){
-  //         show($scope, tooltipKey, {
-  //           data: event.data,
-  //           event: event
-  //         });
-  //       });
-  //     }
-  //     // register events that trigger tooltip to move
-  //     if(triggerMoveEvent){
-  //       $(dom).on(triggerMoveEvent, function(event){
-  //         move($scope, tooltipKey, {
-  //           data: event.data,
-  //           event: event
-  //         });
-  //       });
-  //     }
-  //     // register events that trigger tooltip to hide
-  //     if(triggerHideEvent){
-  //       $(dom).on(triggerHideEvent, function(){
-  //         hide($scope, tooltipKey);
-  //       });
-  //     }
-  //   }
-
-  //   function show($scope, tooltipKey, data){
-  //     $scope.$broadcast('sstooltip:show', tooltipKey, data);
-  //   }
-
-  //   function move($scope, tooltipKey, data){
-  //     $scope.$broadcast('sstooltip:move', tooltipKey, data);
-  //   }
-
-  //   function hide($scope, tooltipKey){
-  //     $scope.$broadcast('sstooltip:hide', tooltipKey);
-  //   }
-
-  //   return{
-  //     triggerOnScopeEvents: triggerOnScopeEvents,
-  //     triggerOnDomEvents: triggerOnDomEvents,
-  //     show: show,
-  //     move: move,
-  //     hide: hide
-  //   };
-  // }]);
 
   return module;
 

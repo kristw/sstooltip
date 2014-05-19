@@ -25,7 +25,7 @@ function ($, angular, sstooltip) {
 
   var module = angular.module('sstooltip', []);
 
-  module.directive('ssTooltip', [function (){
+  module.directive('sstooltip', [function (){
     return {
       restrict: 'AE',
       replace: true,
@@ -38,8 +38,13 @@ function ($, angular, sstooltip) {
       link: function(scope, element, attrs) {
 
         /* jshint ignore:start */
-        var tip = new sstooltip(element[0].querySelector('.sstooltip'));
+        var tooltipElement = element[0].querySelector('.sstooltip');
+        var tip = new sstooltip(tooltipElement);
         /* jshint ignore:end */
+
+        if(attrs.tooltipTheme){
+          $(tooltipElement).addClass('sstooltip-'+attrs.tooltipTheme);
+        }
 
         scope.$on('sstooltip:show', function(event, tooltipKey, data){
           if(tooltipKey==scope.tooltipKey){
@@ -82,7 +87,7 @@ function ($, angular, sstooltip) {
     }
   }
 
-  module.factory('ssTooltipManager', [function(){
+  module.factory('sstooltipManager', [function(){
     return function($scope, tooltipKey){
 
       function triggerOnScopeEvents(triggerShowEvent, triggerMoveEvent, triggerHideEvent, dataFn, mouseEventFn){

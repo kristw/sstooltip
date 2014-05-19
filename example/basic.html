@@ -42,12 +42,12 @@
 		<script type="text/javascript" src="../dist/sstooltip.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function(){
-			myTip = new sstooltip($("#myTip")[0], {
+			var myTip = new sstooltip($("#myTip")[0], {
 				yOffset: 15
 			});
 
 			// manual binding
-			$link1 = $("#link1");
+			var $link1 = $("#link1");
 			$link1.on("mouseover", function(event){
 				myTip.show("This is tooltip!", event);
 			});

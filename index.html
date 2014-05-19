@@ -2,28 +2,105 @@
 
 <html>
   <head>
-    <link rel="stylesheet" href="../dist/sstooltip.css">
-    <style type="text/css">
-      body{
-        font-family: Helvetica, Arial, sans-serif;
-      }
-      a {
-        color: #0088cc;
-        text-decoration: none;
-      }
-      a:hover {
-        color: #005580;
-        text-decoration: underline;
-      }
-    </style>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/dist/sstooltip.css">
   </head>
 
   <body>
-    <h1>
-      <a href="example/basic.html">basic example</a>
-    </h1>
-    <h1>
-      <a href="example/angular.html">angular example</a>
-    </h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>sstooltip</h1>
+          <p class="">
+            This is a simple &amp; stupid tooltip, a.k.a. <i>sstooltip</i>, javascript library, written by <a id="twitter-link" href="https://twitter.com/kristw">@kristw</a>.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h4>
+          Features
+          </h4>
+
+          <ul>
+            <li><b>Smart tooltip placement:</b> It will try to place the tooltip at the suitable position (avoid falling of the screen.)</li>
+            <li><b>Lightweight:</b> Only 3KB (2KB js + 1KB css) plus addition 3KB for angularjs support</li>
+            <li><b>Supports angularjs:</b> Comes with directive <code>sstooltip</code> and service <code>sstooltipManager</code></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Dependencies</h4>
+          <ul>
+            <li>
+              <code>jQuery</code>
+            </li>
+            <li>
+              <code>angularjs</code><br>
+              <small>(only for angular-sstooltip.js)</small>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Files</h4>
+          <ul>
+            <li>
+              <a href="dist/sstooltip.js">sstooltip.js</a>
+            </li>
+            <li>
+              <a href="dist/sstooltip.css">sstooltip.css</a>
+            </li>
+            <li>
+              <a href="dist/angular-sstooltip.js">angular-sstooltip.js</a>
+            </li>
+          </ul>
+          <p>
+          and minified versions of them
+          </p>
+          <ul>
+            <li>
+              <a href="dist/sstooltip.min.js">sstooltip.min.js</a>
+            </li>
+            <li>
+              <a href="dist/sstooltip.min.css">sstooltip.min.css</a>
+            </li>
+            <li>
+              <a href="dist/angular-sstooltip.min.js">angular-sstooltip.min.js</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6" align="center">
+          <div class="well">
+            <h3>Easy tooltip</h3>
+            <a id="basic-link" href="example/basic.html">See basic examples</a>
+          </div>
+        </div>
+        <div class="col-md-6" align="center">
+          <div class="well">
+            <h3>Angularjs ready</h3>
+            <a id="angular-link" href="example/angular.html">See angular examples</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- wrap the tooltip in a relative div -->
+    <div style="position:relative">
+      <!-- the actual tooltip node -->
+      <div id="my-tip" style="display:none"></div>
+    </div>
+
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/src/sstooltip.js"></script>
+    <script>
+      $(document).ready(function(){
+        var myTip = new sstooltip('#my-tip');
+        myTip.bind('#twitter-link', 'This is sstooltip. :)');
+        myTip.bind('#basic-link', 'Click to go to basic examples!');
+        myTip.bind('#angular-link', 'Click to go to angular examples. This tooltip does not fall off the screen. :)');
+      });
+    </script>
+
   </body>
 </html>

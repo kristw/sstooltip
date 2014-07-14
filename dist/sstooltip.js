@@ -25,14 +25,14 @@
     // Init
     //---------------------------------------------------
     var dom = $(node)[0];
-    var $tooltip = $(node).addClass("sstooltip");
+    var $tooltip = $(node).addClass('sstooltip');
     var $parent  = $tooltip.parent();
     var $window  = $(window);
 
     var options = $.extend({}, DEFAULT_OPTIONS, customOptions);
 
     if(options.width){
-      $tooltip.css("width", width);
+      $tooltip.css('width', width);
     }
 
     hide();
@@ -43,6 +43,8 @@
     function show(content, event){
       switch(arguments.length){
         case 1:
+          // if there is only one argument, assume that it is event
+          // just update the position and do not update content
           dom.style.display = 'block';
           updatePosition(arguments[0]);
           break;
@@ -99,7 +101,7 @@
 
     function bind(selector, content){
       var $target = $(selector);
-      $target.on("mouseover", function(event){
+      $target.on('mouseover', function(event){
         if($.isFunction(content)){
           show(content.call(this), event);
         }
@@ -107,8 +109,8 @@
           show(content, event);
         }
       });
-      $target.on("mousemove", updatePosition);
-      $target.on("mouseout",  hide);
+      $target.on('mousemove', updatePosition);
+      $target.on('mouseout',  hide);
     }
 
     return {

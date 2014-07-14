@@ -29,7 +29,7 @@ function ($, angular, sstooltip) {
     return {
       restrict: 'AE',
       replace: true,
-      template: '<div style="position:relative"><div class="sstooltip"><div ng-if="tooltipText">{{tooltipText}}</div><div ng-if="tooltipSrc"><ng-include src="tooltipSrc"></ng-include></div></div></div>',
+      template: '<div class="sstooltip-container"><div class="sstooltip"><div ng-if="tooltipText">{{tooltipText}}</div><div ng-if="tooltipSrc"><ng-include src="tooltipSrc"></ng-include></div></div></div>',
       scope:{
         tooltipKey: '@',
         tooltipSrc: '=',

@@ -1,11 +1,8 @@
 {
   "name": "sstooltip",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "A simple, stupid tooltip, but that's probably exactly what you need",
   "main": "dist/sstooltip.js",
-  "directories": {
-    "example": "example"
-  },
   "devDependencies": {
     "node-sass": "*",
     "uglify-js": "*",
@@ -17,9 +14,8 @@
     "sass": "node-sass src/sstooltip.scss dist/sstooltip.css",
     "copy": "cp src/*.js dist/",
     "uglify:js": "uglifyjs src/sstooltip.js -c -m -v --stats -o dist/sstooltip.min.js",
-    "uglify:ng": "uglifyjs src/angular-sstooltip.js -c -m -v --stats -o dist/angular-sstooltip.min.js",
     "uglify:css": "uglifycss dist/sstooltip.css > dist/sstooltip.min.css",
-    "uglify": "npm run uglify:js && npm run uglify:ng && npm run uglify:css"
+    "uglify": "npm run uglify:js && npm run uglify:css"
   },
   "repository": {
     "type": "git",

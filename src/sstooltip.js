@@ -11,8 +11,6 @@
   }
 }(this, function ($) {
 
-  var VERSION = '3.1.0';
-
   var DEFAULT_OPTIONS = {
     xOffset: 20,
     yOffset: 10,
@@ -120,7 +118,6 @@
     };
   };
 
-  sstooltip.version = VERSION;
   return sstooltip;
 }));
 

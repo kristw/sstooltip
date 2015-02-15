@@ -1,6 +1,6 @@
 {
   "name": "sstooltip",
-  "main": "sstooltip.min.js",
+  "main": "dist/sstooltip.js",
   "version": "4.0.0",
   "homepage": "https://github.com/kristw/sstooltip",
   "authors": [

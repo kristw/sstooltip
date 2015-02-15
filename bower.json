@@ -12,7 +12,7 @@
     "tooltip",
     "sstooltip-angular"
   ],
-  "license": "Apache 2",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",

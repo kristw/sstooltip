@@ -23,6 +23,11 @@ function ($, angular, sstooltip) {
     else scope.$apply(fn);
   }
 
+  var isFunction = function (functionToCheck) {
+    var getType = {};
+    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+  };
+
   var module = angular.module('sstooltip', []);
 
   module.directive('sstooltip', [function (){
@@ -43,7 +48,7 @@ function ($, angular, sstooltip) {
         /* jshint ignore:end */
 
         if(attrs.tooltipTheme){
-          $(tooltipElement).addClass('sstooltip-'+attrs.tooltipTheme);
+          angular.element(tooltipElement).addClass('sstooltip-'+attrs.tooltipTheme);
         }
 
         scope.$on('sstooltip:show', function(event, tooltipKey, data){
@@ -79,7 +84,7 @@ function ($, angular, sstooltip) {
    * @return {[type]}              [description]
    */
   function magic(fnOrObj, value, defaultValue){
-    if($.isFunction(fnOrObj)){
+    if(isFunction(fnOrObj)){
       return fnOrObj(value);
     }
     else{
@@ -118,21 +123,23 @@ function ($, angular, sstooltip) {
       }
 
       function triggerOnDomEvents(dom, triggerShowEvent, triggerMoveEvent, triggerHideEvent, dataFn){
+        var $dom = angular.element(dom);
+
         // register events that trigger tooltip to show
         if(triggerShowEvent){
-          $(dom).on(triggerShowEvent, function(mouseEvent){
+          $dom.on(triggerShowEvent, function(mouseEvent){
             show(mouseEvent, magic(dataFn, mouseEvent, mouseEvent.data));
           });
         }
         // register events that trigger tooltip to move
         if(triggerMoveEvent){
-          $(dom).on(triggerMoveEvent, function(mouseEvent){
+          $dom.on(triggerMoveEvent, function(mouseEvent){
             move(mouseEvent, magic(dataFn, mouseEvent, mouseEvent.data));
           });
         }
         // register events that trigger tooltip to hide
         if(triggerHideEvent){
-          $(dom).on(triggerHideEvent, hide);
+          $dom.on(triggerHideEvent, hide);
         }
       }
 

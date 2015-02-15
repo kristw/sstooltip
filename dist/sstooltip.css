@@ -1,9 +1,6 @@
-/* line 1, ../src/sstooltip.scss */
 .sstooltip-container {
-  position: relative;
-}
+  position: relative; }
 
-/* line 5, ../src/sstooltip.scss */
 .sstooltip {
   position: absolute;
   z-index: 10;
@@ -14,82 +11,49 @@
   opacity: .9;
   color: #ccc;
   padding: 10px;
-  font-size: 12px;
-}
-/* line 17, ../src/sstooltip.scss */
-.sstooltip h1, .sstooltip h2, .sstooltip h3, .sstooltip h4, .sstooltip h5, .sstooltip h6 {
-  color: #eee;
-}
-/* line 21, ../src/sstooltip.scss */
-.sstooltip h1 {
-  font-size: 20px;
-  font-weight: normal;
-  margin-top: 10px;
-}
-/* line 26, ../src/sstooltip.scss */
-.sstooltip h1:first-child {
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
-/* line 31, ../src/sstooltip.scss */
-.sstooltip h2 {
-  font-weight: normal;
-  font-size: 16px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-/* line 38, ../src/sstooltip.scss */
-.sstooltip p {
-  margin-bottom: 6px;
-}
-/* line 41, ../src/sstooltip.scss */
-.sstooltip p:last-child {
-  margin-bottom: 0px;
-}
-/* line 45, ../src/sstooltip.scss */
-.sstooltip table {
-  margin-top: 6px;
-  margin-bottom: 6px;
-}
-/* line 48, ../src/sstooltip.scss */
-.sstooltip table th {
-  font-weight: normal;
-  color: #eee;
-  padding-right: 6px;
-}
-/* line 53, ../src/sstooltip.scss */
-.sstooltip table td {
-  font-weight: normal;
-  color: #aaa;
-}
-/* line 57, ../src/sstooltip.scss */
-.sstooltip table tr.separator {
-  height: 3px;
-}
-/* line 59, ../src/sstooltip.scss */
-.sstooltip table tr.separator td, .sstooltip table tr.separator th {
-  height: 3px;
-}
-/* line 65, ../src/sstooltip.scss */
-.sstooltip ul {
-  margin-top: 6px;
-  padding-left: 18px;
-}
-/* line 73, ../src/sstooltip.scss */
-.sstooltip.sstooltip-inverse {
-  background: #eee;
-  border: 1px solid #ddd;
-  color: #222;
-}
-/* line 78, ../src/sstooltip.scss */
-.sstooltip.sstooltip-inverse h1, .sstooltip.sstooltip-inverse h2, .sstooltip.sstooltip-inverse h3, .sstooltip.sstooltip-inverse h4, .sstooltip.sstooltip-inverse h5, .sstooltip.sstooltip-inverse h6 {
-  color: #111;
-}
-/* line 82, ../src/sstooltip.scss */
-.sstooltip.sstooltip-inverse th {
-  color: #222;
-}
-/* line 85, ../src/sstooltip.scss */
-.sstooltip.sstooltip-inverse td {
-  color: #333;
-}
+  font-size: 12px; }
+  .sstooltip h1, .sstooltip h2, .sstooltip h3, .sstooltip h4, .sstooltip h5, .sstooltip h6 {
+    color: #eee; }
+  .sstooltip h1 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 10px; }
+  .sstooltip h1:first-child {
+    margin-top: 0px;
+    margin-bottom: 10px; }
+  .sstooltip h2 {
+    font-weight: normal;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px; }
+  .sstooltip p {
+    margin-bottom: 6px; }
+  .sstooltip p:last-child {
+    margin-bottom: 0px; }
+  .sstooltip table {
+    margin-top: 6px;
+    margin-bottom: 6px; }
+    .sstooltip table th {
+      font-weight: normal;
+      color: #eee;
+      padding-right: 6px; }
+    .sstooltip table td {
+      font-weight: normal;
+      color: #aaa; }
+    .sstooltip table tr.separator {
+      height: 3px; }
+      .sstooltip table tr.separator td, .sstooltip table tr.separator th {
+        height: 3px; }
+  .sstooltip ul {
+    margin-top: 6px;
+    padding-left: 18px; }
+  .sstooltip.sstooltip-inverse {
+    background: #eee;
+    border: 1px solid #ddd;
+    color: #222; }
+    .sstooltip.sstooltip-inverse h1, .sstooltip.sstooltip-inverse h2, .sstooltip.sstooltip-inverse h3, .sstooltip.sstooltip-inverse h4, .sstooltip.sstooltip-inverse h5, .sstooltip.sstooltip-inverse h6 {
+      color: #111; }
+    .sstooltip.sstooltip-inverse th {
+      color: #222; }
+    .sstooltip.sstooltip-inverse td {
+      color: #333; }

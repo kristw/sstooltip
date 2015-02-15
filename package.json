@@ -1,0 +1,38 @@
+{
+  "name": "sstooltip",
+  "version": "3.2.0",
+  "description": "A simple, stupid tooltip, but that's probably exactly what you need",
+  "main": "dist/sstooltip.js",
+  "directories": {
+    "example": "example"
+  },
+  "devDependencies": {
+    "node-sass": "*",
+    "uglify-js": "*",
+    "uglifycss": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run sass && npm run copy && npm run uglify",
+    "sass": "node-sass src/sstooltip.scss dist/sstooltip.css",
+    "copy": "cp src/*.js dist/",
+    "uglify:js": "uglifyjs src/sstooltip.js -c -m -v --stats -o dist/sstooltip.min.js",
+    "uglify:ng": "uglifyjs src/angular-sstooltip.js -c -m -v --stats -o dist/angular-sstooltip.min.js",
+    "uglify:css": "uglifycss dist/sstooltip.css > dist/sstooltip.min.css",
+    "uglify": "npm run uglify:js && npm run uglify:ng && npm run uglify:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kristw/sstooltip.git"
+  },
+  "keywords": [
+    "sstooltip",
+    "tooltip"
+  ],
+  "author": "Krist Wongsuphasawat <krist.wongz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kristw/sstooltip/issues"
+  },
+  "homepage": "https://github.com/kristw/sstooltip"
+}

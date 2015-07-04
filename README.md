@@ -16,8 +16,18 @@ For AngularJS support, check out [angular-sstooltip](https://github.com/kristw/a
 ## Installation
 
 ```
-bower install sstooltip
+bower install sstooltip --save
+```
+
+or
+
+```
+npm install sstooltip --save
 ```
 
 ## Development
-To build ```npm run prepublish```
+To build
+
+```
+grunt build
+```

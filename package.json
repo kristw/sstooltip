@@ -1,6 +1,6 @@
 {
   "name": "sstooltip",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "A simple, stupid tooltip, but that's probably exactly what you need",
   "main": "dist/sstooltip.js",
   "devDependencies": {

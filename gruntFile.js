@@ -30,4 +30,6 @@ module.exports = function (grunt) {
       return config;
     }
   });
+
+  // For aliases, see grunt/aliases.js
 };

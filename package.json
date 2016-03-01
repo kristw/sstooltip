@@ -12,15 +12,16 @@
     "load-grunt-config": "~0.17.1",
     "time-grunt": "~1.2.1",
     "grunt-sass": "~0.16.1",
-    "grunt-contrib-cssmin": "~0.8.0"
+    "grunt-contrib-cssmin": "~0.8.0",
+    "pkgfiles": "^2.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "grunt build",
     "preversion": "npm test",
     "version": "npm run build && git add -A dist",
-    "postversion": "pkgfiles",
-    "prepublish": "git push ; git push --tags"
+    "postversion": "git push ; git push --tags; pkgfiles",
+    "prepublish": "pkgfiles"
   },
   "repository": {
     "type": "git",
